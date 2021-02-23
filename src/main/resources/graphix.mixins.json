@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.github.lochnessdragon.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [],
+  "client" : [],
+  "server": [
+  	"ChatMessageMixin",
+  	"TranslatableTextAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
