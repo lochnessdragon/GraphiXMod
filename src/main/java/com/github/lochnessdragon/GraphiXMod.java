@@ -12,8 +12,8 @@ import com.github.lochnessdragon.mixin.TranslatableTextAccessor;
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.MessageType;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 
@@ -47,7 +47,7 @@ public class GraphiXMod implements DedicatedServerModInitializer {
 				if(text instanceof TranslatableText) {
 					TranslatableText original = (TranslatableText) text;
 					if(original.getKey().equals("chat.type.text")) {
-						PlayerEntity player = manager.getPlayer(senderUUID);
+						ServerPlayerEntity player = manager.getPlayer(senderUUID);
 						if(player != null) {
 							// safe to continue
 							((TranslatableTextAccessor) original).setKey(formatter.format(player));

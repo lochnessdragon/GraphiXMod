@@ -5,7 +5,6 @@ import com.github.lochnessdragon.config.LuckPermsAPI;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.luckperms.api.model.user.User;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.scoreboard.Team;
 import net.minecraft.server.network.ServerPlayerEntity;
 
@@ -21,7 +20,7 @@ public class ChatFormatter {
 		INSTANCE = this;
 	}
 	
-	public String format(PlayerEntity player) {
+	public String format(ServerPlayerEntity player) {
 		Team team = (Team) player.getScoreboardTeam();
 		
 		User user = LuckPermsAPI.getUserByPlayer((ServerPlayerEntity) player);
