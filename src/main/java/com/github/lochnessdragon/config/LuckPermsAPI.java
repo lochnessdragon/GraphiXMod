@@ -30,7 +30,7 @@ public class LuckPermsAPI {
 			fullPrefix += prefix + " ";
 		}
 		
-		fullPrefix = fullPrefix.replace("&", "§");
+		fullPrefix = fullPrefix.replace("&", "\u00A7");
 		if(fullPrefix.length() > 0)
 			fullPrefix = fullPrefix.substring(0, fullPrefix.length() - 1);
 		
@@ -45,7 +45,7 @@ public class LuckPermsAPI {
 			fullSuffix += suffix + " ";
 		}
 		
-		fullSuffix = fullSuffix.replace("&", "§");
+		fullSuffix = fullSuffix.replace("&", "\u00A7");
 		if(fullSuffix.length() > 0)
 			fullSuffix = fullSuffix.substring(0, fullSuffix.length() - 1);
 		
