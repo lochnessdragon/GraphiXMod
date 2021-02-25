@@ -27,11 +27,11 @@ public class GraphiXMod implements DedicatedServerModInitializer {
 	
 	@Override
 	public void onInitializeServer() {
-		System.out.println("---------------------------------------------------");
-		System.out.println("  \\ /   |  GraphiX Mod: Version 0.0.1");
-		System.out.println("   X    |   - Adds custom color to your chats");
-		System.out.println("  / \\   |   - Support can be found at: https://www.lochnessdragon.github.io/graphixmod");
-		System.out.println("---------------------------------------------------");
+		LOGGER.info("");
+		LOGGER.info("  \\ /   |  GraphiX Mod: Version 0.0.1");
+		LOGGER.info("   X    |   - Adds custom color to your chats");
+		LOGGER.info("  / \\   |   - Support can be found at: https://www.lochnessdragon.github.io/graphixmod");
+		LOGGER.info("");
 		
 		// Config
 		configLoader = ConfigLoader.of("graphix").provider(this::configProvider).request();
@@ -51,9 +51,9 @@ public class GraphiXMod implements DedicatedServerModInitializer {
 						if(player != null) {
 							// safe to continue
 							((TranslatableTextAccessor) original).setKey(formatter.format(player));
+							//LOGGER.info(text.getString());
 						}
 					}
-					
 				}
 			}
 

@@ -20,12 +20,8 @@ import net.minecraft.util.ActionResult;
 @Environment(EnvType.SERVER)
 @Mixin(PlayerManager.class)
 public class ChatMessageMixin {
-    @Inject(at = @At(value = "INVOKE"), method = "broadcastChatMessage", cancellable = true)
+    @Inject(at = @At(value = "HEAD"), method = "broadcastChatMessage", cancellable = false)
     private void onBroadcastChat(Text message, MessageType type, UUID senderUuid, CallbackInfo info) {
         ActionResult result = ChatMessageCallback.EVENT.invoker().onBroadcastChat(message, type, senderUuid, (PlayerManager) (Object) this);
- 
-        if(result == ActionResult.FAIL) {
-            info.cancel();
-        }
     }
 }
