@@ -96,6 +96,7 @@ publishing {
     }
 }
 
+/*
 import com.modrinth.minotaur.TaskModrinthUpload
  
 task publishModrinth (type: TaskModrinthUpload) {
@@ -113,4 +114,4 @@ task publishModrinth (type: TaskModrinthUpload) {
     System.out.println("Enter changelog:");
     changelog = br.readLine();
     addLoader("fabric")
-}
+}*/
