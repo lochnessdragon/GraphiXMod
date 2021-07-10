@@ -1,5 +1,10 @@
 package com.github.lochnessdragon;
 
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.PlayerManager;
+import net.minecraft.server.command.SayCommand;
+import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,7 +17,6 @@ import com.github.lochnessdragon.mixin.TranslatableTextAccessor;
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.loom.util.FabricApiExtension;
 import net.minecraft.network.MessageType;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.TranslatableText;
@@ -29,7 +33,7 @@ public class GraphiXMod implements DedicatedServerModInitializer {
 	@Override
 	public void onInitializeServer() {
 		LOGGER.info("");
-		LOGGER.info("  \\ /   |  GraphiX Mod: Version 0.0.1");
+		LOGGER.info("  \\ /   |  GraphiX Mod: Version 0.0.1-v2");
 		LOGGER.info("   X    |   - Adds custom color to your chats");
 		LOGGER.info("  / \\   |   - Support can be found at: https://www.lochnessdragon.github.io/graphixmod");
 		LOGGER.info("");
@@ -43,14 +47,16 @@ public class GraphiXMod implements DedicatedServerModInitializer {
 		
 		// Register chat stuff
 		ChatMessageCallback.EVENT.register((text, type, senderUUID, manager) -> {
-			//System.out.println(senderUUID + ": " + text.getString());
-			if(type == MessageType.CHAT) { // We only want to scan player messages, not systemwide ones
+//			System.out.println(senderUUID + ": " + text.getString());
+			if(type == MessageType.CHAT) { // We only want to scan player messages, not system-wide ones
 				if(text instanceof TranslatableText) {
 					TranslatableText original = (TranslatableText) text;
 					if(original.getKey().equals("chat.type.text")) {
 						ServerPlayerEntity player = manager.getPlayer(senderUUID);
 						if(player != null) {
 							// safe to continue
+							Text outputtedText = Text.of(String.format(formatter.format(player), text.getString()));
+							manager.broadcastChatMessage(outputtedText, MessageType.CHAT, senderUUID);
 							((TranslatableTextAccessor) original).setKey(formatter.format(player));
 							//LOGGER.info(text.getString());
 						}

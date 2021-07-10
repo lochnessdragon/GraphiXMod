@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "GraphiX Mod",
-  "description": "This mod will help you improve your server experience as it adds custom hd display, scordboards, and tab lists.",
+  "description": "This mod will help you improve your server experience as it adds custom hd display, scoreboards, and tab lists.",
   "authors": [
     "lochnessdragon"
   ],
@@ -27,9 +27,9 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.7.4",
+    "fabricloader": ">=0.11.3",
     "fabric": "*",
-    "minecraft": "1.16.x",
+    "minecraft": "1.17.x",
     "luckperms": ">=5.2.0"
   },
   "suggests": {

@@ -29,7 +29,7 @@ public class ChatFormatter {
 		String suffix = LuckPermsAPI.getSuffix(user);
 		String group = LuckPermsAPI.getGroup(user);
 		
-		// What follows is essetialsX like chat formatting, {1} and {2} are unimplemented because I didn't want to do them
+		// What follows is essentialsX like chat formatting, {1} and {2} are unimplemented because I didn't want to do them
 		String returnValue = format;
 		returnValue = returnValue.replace("{0}", group);
 		//returnValue = returnValue.replace("{1}", player.getEntityWorld().get); 
